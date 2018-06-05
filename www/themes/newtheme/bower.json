@@ -1,0 +1,7 @@
+{
+  "name": "newtheme",
+  "version": "0.0.0",
+  "dependencies": {
+    "singularity": "~1.6.2"
+  }
+}

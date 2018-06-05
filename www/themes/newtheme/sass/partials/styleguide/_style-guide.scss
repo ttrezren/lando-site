@@ -1,0 +1,17 @@
+////////////////////////
+// Style Guide Partials
+//
+// Your Style Guide
+// Build sub folders and partials in this folder, with everything being imported, in cascading order, into this file.
+//
+// All Style Guide selectors should go in here, regardless of layout or design (but separating the two in here is a good idea).
+////////////////////////
+
+ul li.leaf, ul li a, ul li, a {
+text-decoration: none;
+list-style-type: none;
+list-style-image: none;
+}
+
+
+

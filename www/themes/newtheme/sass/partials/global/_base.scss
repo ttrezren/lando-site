@@ -1,0 +1,28 @@
+////////////////////////
+// Base Partials
+//
+// These files will be shared across all three of your output CSS files. Generally included here are only Compass Extension imports and imports for variables, functions, mixins, and extendables.
+//
+// Toolkit imports all of Compass, so there is no need to import it separately.
+////////////////////////
+
+////////////////////////
+// Compass Extensions
+////////////////////////
+
+@import 'breakpoint';
+@import 'singularitygs';
+@import 'toolkit';
+
+////////////////////////
+// Example Grid
+////////////////////////
+
+//@include add-grid(23);
+//@include add-gutter(0);
+
+//@include sgs-change('direction', 'ltr');
+//@include sgs-change('output', 'isolation');
+
+//@include sgs-change('debug', true);
+

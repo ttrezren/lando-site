@@ -1,0 +1,9 @@
+{
+  "name": "newtheme",
+  "version": "0.0.0",
+  "description": "Themeward ho!",
+  "author": "Tim",
+  "email": "tim.renner@pincsf.org",
+  "url": "https://github.com/ttrezren/lando-site",
+  "dependencies": {}
+}
