@@ -1,0 +1,33 @@
+type = layout
+name = Sutro Full
+version = 1.4.1
+backdrop = 1.x
+
+; Specify regions for this layout.
+regions[header]     = Header
+regions[top]        = Top
+regions[content]    = Content
+regions[half1]      = Half First
+regions[half2]      = Half Second
+regions[bottom]     = Bottom
+regions[footer]     = Footer
+
+; The default region automatically receives the "Main Content" block if needed.
+default region = half1
+
+; Include a file for special preprocessing of this layout's variables.
+; file = sutro_full.php
+
+; Default stylesheets for this layout
+; stylesheets[all][] = sutro_full.css
+
+; Preview
+preview = sutro_full.png
+
+; Include the Bootstrap4 Grid System
+libraries[] = bootstrap4-gs
+
+; Added by Backdrop CMS packaging script on 2016-06-19
+project = b4_radix_full
+version = 1.x-1.4.1
+timestamp = 1466376114

@@ -77,6 +77,13 @@ config:
 services:
   node-cli:
     type: node:6.10
+    build:
+      - "cd $LANDO_MOUNT/www/themes/absurdist && yarn install"
+    overrides:
+      services:
+        ports:
+          - 3000:3000
+          - 3001:3001
     globals:
       gulp-cli: "latest"
 

@@ -1,0 +1,29 @@
+name = Juiced Up Full Screen Top
+version = BACKDROP_VERSION
+type = layout
+backdrop = 1.x
+
+; Include file for special preprocessing of this layout's variables.
+; file = juiced_up_full_screen_top.php
+
+; Specify regions for this layout.
+regions[content] = Content
+regions[header] = Header
+regions[top] = Top
+regions[statement1] = Big Statement 1
+regions[secondary1] = Secondary Content 1
+regions[statement2] = Big Statement 2
+regions[secondary2] = Secondary Content 2
+regions[statement3] = Big Statement 3
+regions[bottom] = Bottom
+regions[calltoaction] = Call To Action
+regions[footer]  = Footer
+
+; The default region automatically receives the "Main Content" block if needed.
+; Modify this line if you would like to change the default in this layout.
+default region = content
+
+; Added by Backdrop CMS packaging script on 2016-06-02
+project = juiced_up_layouts
+version = 1.x-1.1.0
+timestamp = 1464921071
