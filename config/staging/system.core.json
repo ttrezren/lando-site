@@ -58,9 +58,9 @@
     "site_name": "Clone of Lando",
     "site_logo_theme": 0,
     "site_logo_path": "",
-    "site_mail": "",
-    "site_slogan": "",
-    "theme_default": "newtheme",
+    "site_mail": "tim.renner@pincsf.org",
+    "site_slogan": "we please to aim",
+    "theme_default": "absurdist",
     "theme_debug": 0,
     "user_admin_role": "administrator",
     "user_cancel_method": "user_cancel_block",
@@ -89,5 +89,11 @@
         5,
         6
     ],
-    "x_frame_options": "SAMEORIGIN"
+    "x_frame_options": "SAMEORIGIN",
+    "site_logo_attributes": {
+        "width": "",
+        "height": ""
+    },
+    "site_logo_upload": "",
+    "site_favicon_upload": ""
 }

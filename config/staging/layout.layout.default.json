@@ -4,9 +4,10 @@
     "name": "default",
     "title": "Default Layout",
     "description": null,
+    "renderer_name": "standard",
     "module": "layout",
     "weight": 0,
-    "storage": 4,
+    "storage": 2,
     "layout_template": "moscone_flipped",
     "disabled": false,
     "settings": {
@@ -41,10 +42,10 @@
                     "title": "",
                     "style": "default",
                     "block_settings": {
-                        "menu": "user-menu",
-                        "logo": 1,
-                        "site_name": 1,
-                        "site_slogan": 1
+                        "menu": "",
+                        "logo": 0,
+                        "site_name": 0,
+                        "site_slogan": 0
                     },
                     "contexts": []
                 },
@@ -65,13 +66,16 @@
                 "module": "system",
                 "delta": "main-menu",
                 "settings": {
-                    "title_display": "none",
+                    "title_display": "default",
                     "title": "",
                     "style": "default",
                     "block_settings": {
+                        "menu_name": "main-menu",
                         "style": "dropdown",
-                        "level": 1,
-                        "depth": 0
+                        "level": "1",
+                        "depth": "2",
+                        "expand_all": 0,
+                        "toggle": 1
                     },
                     "contexts": []
                 },
