@@ -1,8 +1,39 @@
-p, body {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; }
+html {
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 2.5rem;
+}
+
+div.l-wrapper-inner {
+  background: #f8f5f5;
+}
 
 h1, h2, h3 {
-  -webkit-text-decoration: solid sandybrown;
-          text-decoration: solid sandybrown;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; }
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3Njc3Mvc3R5bGUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHNHQUFxRyxFQUN4Rzs7QUFFRDtFQUNJLDBDQUFpQztVQUFqQyxrQ0FBaUM7RUFDakMsdUhBQXNILEVBQ3pIIiwiZmlsZSI6InN0eWxlLmNzcyJ9 */
+  color: #6e6e6e;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  line-height: 2.5rem;
+}
+
+h3 {
+  color: rgba(0, 0, 0, 0.87);
+}
+/*# sourceMappingURL=style.css.map */

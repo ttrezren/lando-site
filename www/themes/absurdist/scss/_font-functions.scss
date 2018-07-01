@@ -1,0 +1,13 @@
+@function text-scale($level) {
+    @return map-get(map-get($text-settings, $level), 'font-size');
+  }
+  
+  @function line-height($level) {
+    @return map-get(map-get($text-settings, $level), 'line-height');
+  }
+  
+  @mixin text-setting($level) {
+    font-size: text-scale($level);
+    line-height: line-height($level);
+  }
+  

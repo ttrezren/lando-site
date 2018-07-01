@@ -1,0 +1,14 @@
+$contrast-colors: (
+  'dark': (
+    'primary':#FFF,
+    'secondary': rgba(#FFF, .70),
+    'disabled': rgba(#FFF, .5),
+    'hint': rgba(#FFF, .12)
+  ),
+  'light': (
+    'primary': rgba(#000, .87),
+    'secondary': rgba(#000, .54),
+    'disabled': rgba(#000, .38),
+    'hint': rgba(#000, .12)
+  ),
+);

@@ -1,8 +1,42 @@
-p, body {
+@import '_color-palettes';
+@import '_color-functions';
+@import '_font-sizes';
+@import '_font-functions';
+@import '_contrast-colors';
+@import '_contrast-functions';
+
+html {
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+    html {
+        font-size: 12px;
+    }
+        
+}
+
+body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    @include text-setting('md');
+}
+div.l-wrapper-inner {
+    background: theme-color('background');
 }
 
 h1, h2, h3 {
-    text-decoration: solid sandybrown;
+    color: theme-color('foreground', 'light');
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    @include text-setting('xl');
+}
+
+h2 {
+    @include text-setting('lg');
+}
+
+h3 {
+    @include contrast();
 }
