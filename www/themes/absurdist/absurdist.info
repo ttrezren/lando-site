@@ -4,7 +4,7 @@ backdrop = 1.x
 base theme = bartik
 
 stylesheets[all][] = css/style.css
-; stylesheets[all][] = css/colors.css
+stylesheets[all][] = css/colors.css
 ; stylesheets[print][] = css/print.css
 
 ; Include a style sheet in the rich-text editor.

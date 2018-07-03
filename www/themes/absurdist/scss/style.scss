@@ -5,6 +5,10 @@
 @import '_contrast-colors';
 @import '_contrast-functions';
 
+.layout {
+    background-color: #888;
+}
+
 html {
     font-size: 16px;
 }
@@ -16,8 +20,9 @@ html {
         
 }
 
+
 body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     @include text-setting('md');
 }
 div.l-wrapper-inner {
@@ -25,7 +30,7 @@ div.l-wrapper-inner {
 }
 
 h1, h2, h3 {
-    color: theme-color('foreground', 'light');
+    color: theme-color('accent');
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -38,5 +43,5 @@ h2 {
 }
 
 h3 {
-    @include contrast();
+    @include text-setting('md');
 }
