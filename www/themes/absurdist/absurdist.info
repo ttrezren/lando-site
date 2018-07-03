@@ -3,7 +3,8 @@ description = A sub theme of Bartik, with sass processing as npm script.
 backdrop = 1.x
 base theme = bartik
 
-stylesheets[all][] = css/style.css
+stylesheets[all][] = css/abstyle.css
+; stylesheets[all][] = css/style.css
 stylesheets[all][] = css/colors.css
 ; stylesheets[print][] = css/print.css
 
@@ -14,5 +15,6 @@ stylesheets[all][] = css/colors.css
 ; menu. Color module provides our defaults, so we just register a dummy setting.
 settings[color] = true
 settings[main_menu_tabs] = no-tabs
+
 
 ; used github.com/hellobrian/sass-recipes as a template for sass/watch
