@@ -1,4 +1,21 @@
 {
     "_config_name": "absurdist.settings",
-    "main_menu_tabs": "rounded-tabs"
+    "main_menu_tabs": "square-tabs",
+    "color": {
+        "palette": {
+            "top": "#0779bf",
+            "bottom": "#48a9e4",
+            "bg": "#ffffff",
+            "sidebar": "#f6f6f2",
+            "sidebarborders": "#f9f9f9",
+            "footer": "#292929",
+            "titleslogan": "#fffeff",
+            "text": "#3b3b3b",
+            "link": "#0071B3",
+            "menu": "#f3f7fa",
+            "activemenu": "#fefeff"
+        },
+        "stylesheets": [],
+        "files": []
+    }
 }
