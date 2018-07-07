@@ -5,10 +5,10 @@
 @import '_contrast-colors';
 @import '_contrast-functions';
 
-@import url('https://fonts.googleapis.com/css?family=Arsenal|Roboto:100,400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=Arsenal:700|Open+Sans:300,400,400i,700');
 
 html {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -19,7 +19,7 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     @include text-setting('base');
 }
 
@@ -30,6 +30,7 @@ div.l-wrapper-inner {
 h1, h2, h3, h4, h5{
     // color: theme-color('accent');
     font-family: 'Arsenal', sans-serif;
+    font-weight: bold;
 }
 
 h1 {
