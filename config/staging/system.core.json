@@ -43,7 +43,7 @@
     "page_cache_maximum_age": "300",
     "page_cache_background_fetch": 1,
     "page_cache_keep_stale_age": 172800,
-    "page_compression": 0,
+    "page_compression": 1,
     "preprocess_css": 0,
     "preprocess_js": 0,
     "rss_description": "",
@@ -55,11 +55,11 @@
     "site_favicon_path": "core/misc/favicon.ico",
     "site_favicon_mimetype": "image/vnd.microsoft.icon",
     "site_frontpage": "home",
-    "site_name": "Clone of Lando",
+    "site_name": "Psychoanalytic Institute of Northern California",
     "site_logo_theme": 0,
     "site_logo_path": "",
-    "site_mail": "",
-    "site_slogan": "",
+    "site_mail": "tim.renner@pincsf.org",
+    "site_slogan": "We please to aim...",
     "theme_default": "absurdist",
     "theme_debug": 0,
     "user_admin_role": "administrator",
@@ -89,5 +89,11 @@
         5,
         6
     ],
-    "x_frame_options": "SAMEORIGIN"
+    "x_frame_options": "SAMEORIGIN",
+    "site_logo_attributes": {
+        "width": "",
+        "height": ""
+    },
+    "site_logo_upload": "",
+    "site_favicon_upload": ""
 }

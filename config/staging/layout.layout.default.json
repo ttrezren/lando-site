@@ -4,31 +4,33 @@
     "name": "default",
     "title": "Default Layout",
     "description": null,
+    "renderer_name": "standard",
     "module": "layout",
     "weight": 0,
-    "storage": 4,
-    "layout_template": "moscone_flipped",
+    "storage": 2,
+    "layout_template": "boxton",
     "disabled": false,
     "settings": {
         "title": "",
         "title_display": "default",
-        "title_block": null
+        "title_block": "09f11b4e-877e-45ab-9000-a4c6254faa04"
     },
     "positions": {
         "header": [
             "84c43df4-1165-4faf-8700-c362a7153c0b",
             "13b2f325-af26-40bb-8c61-97fe1d93f19f"
         ],
+        "top": [
+            "09f11b4e-877e-45ab-9000-a4c6254faa04"
+        ],
         "content": [
             "default"
         ],
+        "bottom": [],
         "footer": [
             "cd4d033d-3f67-4191-8655-85ee758877c0"
         ],
-        "sidebar": [],
-        "top": [
-            "09f11b4e-877e-45ab-9000-a4c6254faa04"
-        ]
+        "title": []
     },
     "content": {
         "84c43df4-1165-4faf-8700-c362a7153c0b": {
@@ -43,8 +45,8 @@
                     "block_settings": {
                         "menu": "user-menu",
                         "logo": 1,
-                        "site_name": 1,
-                        "site_slogan": 1
+                        "site_name": 0,
+                        "site_slogan": 0
                     },
                     "contexts": []
                 },
@@ -69,9 +71,12 @@
                     "title": "",
                     "style": "default",
                     "block_settings": {
-                        "style": "dropdown",
-                        "level": 1,
-                        "depth": 0
+                        "menu_name": "main-menu",
+                        "style": "top_only",
+                        "level": "1",
+                        "depth": "0",
+                        "expand_all": 0,
+                        "toggle": 1
                     },
                     "contexts": []
                 },

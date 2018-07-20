@@ -5,8 +5,8 @@
 @import '_contrast-colors';
 @import '_contrast-functions';
 
-@import url('https://fonts.googleapis.com/css?family=Arsenal:700|Open+Sans:300,400,400i,700');
-
+//@import url('https://fonts.googleapis.com/css?family=Arsenal:700|Open+Sans:300,400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow:700|EB+Garamond:500,500i,700|Amarante');
 html {
     font-size: 18px;
 }
@@ -19,22 +19,23 @@ html {
 }
 
 p {
-    color: theme-color('primary','dark');
-    @include text-setting('md');
+    @include text-setting('base');
 }
 
-body {
-    font-family: 'Open Sans', sans-serif;
+body, .site-slogan {
+    @include text-setting('base');
+    color: theme-color('primary');
+    font-family: 'EB Garamond', serif;
+    font-weight: '500';
 }
 
 div.l-wrapper-inner {
-    background: theme-color('background','dark');
+    background: theme-color('background','light');
 }
 
 h1, h2, h3, h4, h5{
     color: theme-color('accent');
-    font-family: 'Arsenal', sans-serif;
-    font-weight: bold;
+    font-family: 'PT Sans Narrow', sans-serif;
 }
 
 h1 {
@@ -50,5 +51,19 @@ h3 {
 }
 
 .l-header, .l-messages, .l-footer, .l-footer-columns, #skip-link, ul.contextual-links, ul.links, ul.primary, .item-list .pager, div.field-type-taxonomy-term-reference, div.meta, p.comment-time, table, .breadcrumb {
-    font-family: 'Arsenal', sans-serif;
+    font-family: 'Amarante', sans-serif;
+    color: theme-color('primary');
+}
+
+.l-header .rounded-tabs ul.menu > li > a.active, .l-header .square-tabs ul.menu > li > a.active {
+    color: theme-color('background','dark');
+}
+
+.l-header .rounded-tabs ul.menu > li > a:hover, .l-header .square-tabs ul.menu > li > a:hover {
+    color: theme-color('primary');
+}
+
+.l-header .rounded-tabs ul.menu > li > a, .l-header .square-tabs ul.menu > li > a {
+    color: theme-color('accent');
+
 }
