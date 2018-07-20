@@ -18,17 +18,21 @@ html {
         
 }
 
+p {
+    color: theme-color('primary','dark');
+    @include text-setting('md');
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
-    @include text-setting('base');
 }
 
 div.l-wrapper-inner {
-    background: theme-color('background');
+    background: theme-color('background','dark');
 }
 
 h1, h2, h3, h4, h5{
-    // color: theme-color('accent');
+    color: theme-color('accent');
     font-family: 'Arsenal', sans-serif;
     font-weight: bold;
 }
