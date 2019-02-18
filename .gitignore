@@ -1,5 +1,4 @@
 config/active
 .vscode
-*.sql.gz
 **/node_modules
 **/yarn.lock

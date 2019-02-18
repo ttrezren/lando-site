@@ -98,7 +98,7 @@ function system_theme() {
     'page_components' => array(
       'variables' => array('settings' => NULL, 'child_delta' => NULL),
       'template' => 'templates/page-components',
-    ),
+    ) + $base,
     'system_admin_index' => array(
       'variables' => array('menu_items' => NULL),
     ) + $base,
@@ -2161,6 +2161,11 @@ function system_authorized_batch_process($redirect_callback = 'backdrop_goto') {
  */
 function system_updater_info() {
   return array(
+    'core' => array(
+      'class' => 'CoreUpdater',
+      'name' => t('Update Backdrop core'),
+      'weight' => 0,
+    ),
     'module' => array(
       'class' => 'ModuleUpdater',
       'name' => t('Update modules'),
@@ -2405,7 +2410,7 @@ function system_block_info() {
   );
   $blocks['breadcrumb'] = array(
     'info' => t('Breadcrumb'),
-    'description' => t('The current page breadcrumb trail.'),
+    'description' => t('A trail of links from the homepage to the current page.'),
     'render last' => TRUE,
   );
   $blocks['powered-by'] = array(
@@ -2795,9 +2800,13 @@ function _system_rebuild_module_data() {
 
   // Include the installation profile in modules that are loaded.
   $profile = backdrop_get_profile();
+  $profile_uri = 'profiles/' . $profile . '/' . $profile . '.profile';
+  if (file_exists(BACKDROP_ROOT . '/core/profiles/' . $profile . '/' . $profile . '.profile')) {
+    $profile_uri = 'core/' . $profile_uri;
+  }
   $modules[$profile] = new stdClass();
   $modules[$profile]->name = $profile;
-  $modules[$profile]->uri = 'profiles/' . $profile . '/' . $profile . '.profile';
+  $modules[$profile]->uri = $profile_uri;
   $modules[$profile]->filename = $profile . '.profile';
 
   // Installation profile hooks are always executed last.
@@ -3075,6 +3084,22 @@ function system_rebuild_theme_data() {
   system_get_files_database($themes, 'theme');
   system_update_files_database($themes, 'theme');
   return $themes;
+}
+
+/**
+ * Implements hook_themes_disabled().
+ *
+ * Remove the theme settings from config when the theme is disabled.
+ */
+function system_themes_disabled($theme_list) {
+  foreach ($theme_list as $theme_name) {
+    if (theme_has_settings($theme_name)) {
+      $config = config($theme_name . '.settings');
+      if (!$config->isNew()) {
+        $config->delete();
+      }
+    }
+  }
 }
 
 /**
@@ -3585,7 +3610,7 @@ function system_cron() {
     ->execute();
 
   // Reset expired items in the default queue implementation table. If that's
-  // not used, this will simply be a no-op.
+  // not used, this will be a no-op.
   db_update('queue')
     ->fields(array(
       'expire' => 0,
@@ -3900,6 +3925,7 @@ function system_autoload_info() {
     'SystemQueue' => 'system.queue.inc',
     'MemoryQueue' => 'system.queue.inc',
     'Archive_Tar' => 'system.tar.inc',
+    'CoreUpdater' => 'system.updater.inc',
     'ModuleUpdater' => 'system.updater.inc',
     'ThemeUpdater' => 'system.updater.inc',
     'LayoutUpdater' => 'system.updater.inc',
@@ -3937,7 +3963,7 @@ function system_config_info() {
   $themes = list_themes();
   foreach ($themes as $theme_name => $theme) {
     // If the theme registers settings, it needs a config file.
-    if (isset($theme->info['settings'])) {
+    if (theme_has_settings($theme_name) && $theme->status == 1) {
       $prefixes[$theme_name . '.settings'] = array(
         'label' => t('!theme settings', array('!theme' => $theme->info['name'])),
         'group' => t('Configuration'),
@@ -4163,4 +4189,25 @@ function _system_sort_form_values_by_config($form, &$form_state, $inherited_buck
     }
   }
   return $configs;
+}
+
+/**
+ * Implements hook_admin_bar_cache_info().
+ */
+function system_admin_bar_cache_info() {
+  $caches = array(
+    'assets' => t('CSS and JavaScript'),
+    'cache' => t('Page and else'),
+    'layout' => t('Layout'),
+    'menu' => t('Menu'),
+    'theme' => t('Theme registry'),
+    'token' => t('Token registry'),
+  );
+  foreach ($caches as $name => $cache) {
+    $caches[$name] = array(
+      'title' => $cache,
+      'callback' => '_admin_bar_flush_cache',
+    );
+  }
+  return $caches;
 }

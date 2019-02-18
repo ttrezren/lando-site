@@ -4,3 +4,8 @@ type = theme
 backdrop = 1.x
 base theme = update_test_basetheme
 hidden = TRUE
+
+; Added by Backdrop CMS packaging script on 2019-02-08
+project = backdrop
+version = 1.12.2
+timestamp = 1549674456

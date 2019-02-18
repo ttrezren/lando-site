@@ -1,5 +1,5 @@
 name = Bartik
-description = The default front-end theme for Backdrop CMS.
+description = Legacy front-end theme.
 version = BACKDROP_VERSION
 type = theme
 backdrop = 1.x
@@ -16,3 +16,7 @@ ckeditor_stylesheets[] = css/editor.css
 settings[color] = true
 settings[main_menu_tabs] = no-tabs
 
+; Added by Backdrop CMS packaging script on 2019-02-08
+project = backdrop
+version = 1.12.2
+timestamp = 1549674456

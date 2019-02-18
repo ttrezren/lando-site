@@ -1,7 +1,16 @@
+type = module
 name = CKEditor
 description = WYSIWYG editing for rich text fields using CKEditor.
-package = User interface
+package = User Interface
+tags[] = Filters
+tags[] = Formats
+tags[] = Text Editors
 version = BACKDROP_VERSION
 backdrop = 1.x
-type = module
+
 configure = admin/config/content/formats
+
+; Added by Backdrop CMS packaging script on 2019-02-08
+project = backdrop
+version = 1.12.2
+timestamp = 1549674456

@@ -28,6 +28,12 @@ description = Create a node and test node edit functionality.
 group = Node
 file = node.test
 
+[PagePreviewTestCase]
+name = Node preview
+description = Test node preview functionality.
+group = Node
+file = node.test
+
 [NodeCreationTestCase]
 name = Node creation
 description = Create a node and test saving it.
@@ -207,3 +213,8 @@ name = Node publishing states tests
 description = Tests the new node states for Draft, Publish Now and Schedule Publish Time.
 group = Node
 file = node.test
+
+; Added by Backdrop CMS packaging script on 2019-02-08
+project = backdrop
+version = 1.12.2
+timestamp = 1549674456

@@ -1022,8 +1022,10 @@ function backdrop_http_request($url, array $options = array()) {
       // Make the socket connection to a proxy server.
       $socket = 'tcp://' . $proxy_server . ':' . settings_get('proxy_port', 8080);
       // The Host header still needs to match the real request.
-      $options['headers']['Host'] = $uri['host'];
-      $options['headers']['Host'] .= isset($uri['port']) && $uri['port'] != 80 ? ':' . $uri['port'] : '';
+      if (!isset($options['headers']['Host'])) {
+        $options['headers']['Host'] = $uri['host'];
+        $options['headers']['Host'] .= isset($uri['port']) && $uri['port'] != 80 ? ':' . $uri['port'] : '';
+      }
       break;
 
     case 'http':
@@ -1033,14 +1035,18 @@ function backdrop_http_request($url, array $options = array()) {
       // RFC 2616: "non-standard ports MUST, default ports MAY be included".
       // We don't add the standard port to prevent from breaking rewrite rules
       // checking the host that do not take into account the port number.
-      $options['headers']['Host'] = $uri['host'] . ($port != 80 ? ':' . $port : '');
+      if (!isset($options['headers']['Host'])) {
+        $options['headers']['Host'] = $uri['host'] . ($port != 80 ? ':' . $port : '');
+      }
       break;
 
     case 'https':
       // Note: Only works when PHP is compiled with OpenSSL support.
       $port = isset($uri['port']) ? $uri['port'] : 443;
       $socket = 'ssl://' . $uri['host'] . ':' . $port;
-      $options['headers']['Host'] = $uri['host'] . ($port != 443 ? ':' . $port : '');
+      if (!isset($options['headers']['Host'])) {
+        $options['headers']['Host'] = $uri['host'] . ($port != 443 ? ':' . $port : '');
+      }
       break;
 
     default:
@@ -1237,6 +1243,11 @@ function backdrop_http_request($url, array $options = array()) {
       elseif ($options['max_redirects']) {
         // Redirect to the new location.
         $options['max_redirects']--;
+        // Remove the automatically added Host header, as the redirect may
+        // be on a different domain name.
+        if (isset($options['headers']['Host'])) {
+          unset($options['headers']['Host']);
+        }
         $result = backdrop_http_request($location, $options);
         $result->redirect_code = $code;
       }
@@ -2564,7 +2575,10 @@ function url($path = NULL, array $options = array()) {
     $langcode = isset($options['language']) && isset($options['language']->langcode) ? $options['language']->langcode : '';
     $alias = backdrop_get_path_alias($original_path, $langcode);
     if ($alias != $original_path) {
-      $path = $alias;
+      // Strip leading slashes from internal path aliases to prevent them
+      // becoming external URLs without protocol. /example.com should not be
+      // turned into //example.com.
+      $path = ltrim($alias, '/');
     }
   }
 
@@ -3395,8 +3409,8 @@ function backdrop_add_css($data = NULL, $options = NULL) {
  * Returns a themed representation of all stylesheets to attach to the page.
  *
  * It loads the CSS in order, with 'module' first, then 'theme' afterwards.
- * This ensures proper cascading of styles so themes can easily override
- * module styles through CSS selectors.
+ * This ensures proper cascading of styles so themes can override module styles
+ * through CSS selectors.
  *
  * Themes may replace module-defined CSS files by adding a stylesheet with the
  * same filename. For example, themes/bartik/system-menus.css would replace
@@ -3632,7 +3646,7 @@ function backdrop_aggregate_css(&$css_groups) {
  * (http://drupal.org/node/228818) and LINK tags are limited to one file per
  * tag, whereas STYLE tags can contain multiple @import statements allowing
  * multiple files to be loaded per tag. When CSS aggregation is disabled, a
- * Backdrop site can easily have more than 31 CSS files that need to be loaded, so
+ * Backdrop site can have more than 31 CSS files that need to be loaded, so
  * using LINK tags exclusively would result in a site that would display
  * incorrectly in IE. Depending on different needs, different strategies can be
  * employed to decide when to use LINK tags and when to use STYLE tags.
@@ -6022,12 +6036,16 @@ function backdrop_cron_run() {
  * @code
  * backdrop_system_listing("/\.module$/", "modules", 'name', 0);
  * @endcode
- * this function will search the site-wide modules directory (i.e., /modules/),
- * your installation profile's directory (i.e.,
- * /profiles/your_site_profile/modules/), the all-sites directory (i.e.,
- * /modules), and your site-specific directory (i.e.,
- * /modules), in that order, and return information about
- * all of the files ending in .module in those directories.
+ *
+ * The following directories will then be searched for modules:
+ * - /sites/[site_name]/modules
+ * - /modules
+ * - /profiles/[install_profile_name]/modules
+ * - /core/profiles/[install_profile_name]/modules
+ * - /core/modules
+ * Directories will be searched in that order. If a module of the same name
+ * exists in two places, the earlier locations will take precedence over the
+ * later ones.
  *
  * The information is returned in an associative array, which can be keyed on
  * the file name ($key = 'filename'), the file name without the extension ($key
@@ -6041,7 +6059,7 @@ function backdrop_cron_run() {
  *   The preg_match() regular expression for the files to find.
  * @param string $directory
  *   The subdirectory name in which the files are found. For example,
- *   'core/modules' will search in sub-directories of the /core/modules
+ *   'modules' will search in sub-directories of the /core/modules/
  *   directory, sub-directories of /modules/, etc.
  * @param string $key
  *   The key to be used for the associative array returned. Possible values are
@@ -6088,6 +6106,9 @@ function backdrop_system_listing($mask, $directory, $key = 'name', $min_depth = 
   // profile always has precedence.
   $profiles[] = $profile;
   foreach ($profiles as $profile) {
+    if (file_exists("core/profiles/$profile/$directory")) {
+      $searchdir[] = "core/profiles/$profile/$directory";
+    }
     if (file_exists("profiles/$profile/$directory")) {
       $searchdir[] = "profiles/$profile/$directory";
     }
@@ -6489,8 +6510,8 @@ function backdrop_render_page($page) {
  * the element has been rendered, which allows individual elements of a given
  * array to be rendered independently and prevents them from being rendered
  * more than once on subsequent calls to backdrop_render() (e.g., as part of a
- * larger array). If the same array or array element is passed more than once
- * to backdrop_render(), it simply returns an empty string.
+ * larger array). If the same array or element is passed more than once to
+ * backdrop_render(), every use beyond the first will return an empty string.
  *
  * @param array $elements
  *   The structured array describing the data to be rendered.
