@@ -5,8 +5,8 @@
 @import '_contrast-colors';
 @import '_contrast-functions';
 
-//@import url('https://fonts.googleapis.com/css?family=Arsenal:700|Open+Sans:300,400,400i,700');
-@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow:700|EB+Garamond:500,500i,700|Amarante');
+// @import url('https://fonts.googleapis.com/css?family=|Open+Sans:300,400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow:700|EB+Garamond:500,500i,700|Arsenal:700');
 html {
     font-size: 18px;
 }
@@ -50,20 +50,28 @@ h3 {
     @include text-setting('md');
 }
 
+a:focus, a:hover {
+    color: theme-color('foreground','light');
+}
+
 .l-header, .l-messages, .l-footer, .l-footer-columns, #skip-link, ul.contextual-links, ul.links, ul.primary, .item-list .pager, div.field-type-taxonomy-term-reference, div.meta, p.comment-time, table, .breadcrumb {
-    font-family: 'Amarante', sans-serif;
+    font-family: 'Arsenal', sans-serif;
+    font-weight: '700';
     color: theme-color('primary');
+}
+.l-header a, .l-messages a, .l-footer a, .l-footer-columns a {
+    color: theme-color('foreground', 'base');
 }
 
 .l-header .rounded-tabs ul.menu > li > a.active, .l-header .square-tabs ul.menu > li > a.active {
-    color: theme-color('background','dark');
+    color: theme-color('foreground','light');
 }
 
 .l-header .rounded-tabs ul.menu > li > a:hover, .l-header .square-tabs ul.menu > li > a:hover {
-    color: theme-color('primary');
+    color: theme-color('foreground', 'dark');
 }
 
 .l-header .rounded-tabs ul.menu > li > a, .l-header .square-tabs ul.menu > li > a {
-    color: theme-color('accent');
+    color: theme-color('foreground', 'base');
 
 }
