@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow:700|EB+Garamond:500,500i,700|Arsenal:700");
 html {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 @media only screen and (max-width: 768px) {
   html {
-    font-size: 12px;
+    font-size: 30px;
   }
 }
 
@@ -46,7 +46,9 @@ h3 {
   line-height: 2.5rem;
 }
 
-a:focus, a:hover {
+.l-footer-columns a:hover, .l-footer-columns a:focus, .l-footer a:hover, .l-footer a:focus {
+  font-family: 'Arsenal', sans-serif;
+  font-weight: '700';
   color: #39393980;
 }
 
@@ -57,7 +59,7 @@ a:focus, a:hover {
 }
 
 .l-header a, .l-messages a, .l-footer a, .l-footer-columns a {
-  color: #393939;
+  color: #a910f0;
 }
 
 .l-header .rounded-tabs ul.menu > li > a.active, .l-header .square-tabs ul.menu > li > a.active {
@@ -65,7 +67,7 @@ a:focus, a:hover {
 }
 
 .l-header .rounded-tabs ul.menu > li > a:hover, .l-header .square-tabs ul.menu > li > a:hover {
-  color: #39393940;
+  color: #a910f080;
 }
 
 .l-header .rounded-tabs ul.menu > li > a, .l-header .square-tabs ul.menu > li > a {
