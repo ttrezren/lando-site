@@ -1,0 +1,23 @@
+name = Scholarly Lite
+description = A Bootstrap-based, responsive Drupal theme by <a href="http://www.morethanthemes.com/" target="_blank">More than (just) Themes</a>.
+backdrop = 1.x
+
+stylesheets[all][] = bootstrap/css/bootstrap.css
+stylesheets[all][] = style.css
+
+settings[breadcrumb_display]= 1
+settings[scrolltop_display]= 1
+settings[frontpage_content_print]= 1
+settings[three_columns_grid_layout]= 'grid_3_6_3'
+settings[color_scheme]= 'gray-red'
+settings[fixed_header]= 1
+settings[form_style]= 'form-style-1'
+settings[headings_font_family]= 'hff-7'
+settings[paragraph_font_family]= 'pff-7'
+settings[sitename_font_family]= 'sff-7'
+settings[slogan_font_family]= 'slff-7'
+settings[responsive_multilevelmenu_state]= 1
+settings[bootstrap_css_cdn]= 3.2.0
+settings[bootstrap_js_cdn]= 3.2.0
+settings[bootstrap_fa_cdn]= 4.2.0
+settings[credits_display]= 1
